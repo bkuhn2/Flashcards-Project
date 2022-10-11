@@ -13,6 +13,7 @@ describe('Turn', function() {
 
   it('should take a guess', function() {
     const turn = new Turn('object');
+    
     expect(turn.guess).to.equal('object');
   });
 
