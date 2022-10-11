@@ -7,4 +7,6 @@ class Card {
   }
 }
 
+//change params to be ONE object with all those, and keys accordingly (see data.js)
+
 module.exports = Card;
