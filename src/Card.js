@@ -1,6 +1,9 @@
 class Card {
-  constructor() {
-
+  constructor(ID, question, possibleAnswers, correctAnswer) {
+    this.id = ID;
+    this.question = question;
+    this.answers = possibleAnswers;
+    this.correctAnswer = correctAnswer;
   }
 }
 
