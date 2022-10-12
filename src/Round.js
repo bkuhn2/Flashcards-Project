@@ -1,4 +1,10 @@
-//class Round {
+class Round {
+  constructor(){
+    this.turns = 0;
+  }
+}
+
+module.exports = Round;
 
 //  need turns property
 //  need incorrect guesses property (array)
@@ -23,6 +29,3 @@
 
 // endRound
 //  - consolelogs string Round over etc, interpolate percentCorrect()
-
-
-// }
