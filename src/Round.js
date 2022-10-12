@@ -1,15 +1,17 @@
 class Round {
-  constructor(){
+  constructor() {
     this.turns = 0;
+    this.incorrectGuesses = [];
+  }
+  returnCurrentCard(deck) {
+    return deck.cards[0]
+    //need a currentCard variable at all? It's kind of highlighted in spec
   }
 }
 
 module.exports = Round;
 
-//  need turns property
-//  need incorrect guesses property (array)
-
-// returnCurrentCard
+// returnCurrentCard✅
 //  - returns current card being played
 //    ・ this card is the first card in the Deck (array of cards)
 
@@ -17,10 +19,10 @@ module.exports = Round;
 //  - updates turns count: "this", updates property above, regardless of correct or not
 //  - makes new Turn instance
 //  - the next card in the deck becomes the current card
-//    ・ HOW?? is the Deck a global variable?
+//    ・ HOW?? is the Deck a global variable? 🤨
 //    ・ remove the card at index 0, and push it into array at end?
 //  - evaluates guesses: method of Turn
-//    ・ incorrect guesses will be stored VIA THE ID in an array (above, "this") incorrectGuesses
+//    ・ incorrect guesses will be stored VIA THE ID 🤨 in an array (above, "this") incorrectGuesses
 //  - returns feedback: method of Turn
 
 // calculatePercentCorrect
