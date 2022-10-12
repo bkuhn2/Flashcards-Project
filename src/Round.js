@@ -1,29 +1,28 @@
 //class Round {
 
-// turns property
+//  need turns property
+//  need incorrect guesses property (array)
 
-// this is the object that takes in responses and records these guesses, and whether
-// they are correct or not
+// returnCurrentCard
+//  - returns current card being played
+//    ・ this card is the first card in the Deck (array of cards)
 
-// currentCard should be the first Card in the Deck(the array of cards) 
-// at the start of the round
-
-// returnCurrentCard - returns current card being played
 // takeTurn
-//    -- updates turn count, evaluates guesses, gives feedback, stores IDs of incorrect guesses
-//    -- probably needs argument of Turn??
-//    -- how do guesses have IDs? where stored?
+//  - updates turns count: "this", updates property above, regardless of correct or not
+//  - makes new Turn instance
+//  - the next card in the deck becomes the current card
+//    ・ HOW?? is the Deck a global variable?
+//    ・ remove the card at index 0, and push it into array at end?
+//  - evaluates guesses: method of Turn
+//    ・ incorrect guesses will be stored VIA THE ID in an array (above, "this") incorrectGuesses
+//  - returns feedback: method of Turn
 
-//    -- when a guess is made, new Turn instance created
-//    -- the turns count is updated, regardless of correct/incorrect
-//    -- next card becomes current card
-//    -- guess is evaluated and recorded (where?) incorrect guesses stored via ID
-//          in an array of incorrectGuesses
-//    -- feedback returned regarding whether guess correct or not
+// calculatePercentCorrect
+//  - calculates + returns percentage of correct guesses
+//  - HOW?? incorrectGuesses.length / turns?
 
-// calculatePercentCorrect: method that calculates and returns the percentage 
-//    of correct guesses
-// endRound: method that prints the following to the console: 
-//    ‘** Round over! ** You answered <>% of the questions correctly!’
+// endRound
+//  - consolelogs string Round over etc, interpolate percentCorrect()
+
 
 // }
