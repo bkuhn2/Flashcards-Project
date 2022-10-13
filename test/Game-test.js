@@ -13,42 +13,55 @@ const { prototype } = require('mocha');
 
 
 describe('Round', function() {
+
+  let game;
+
+  // function below solely to mimic the start() function in the Game.js
+  function testStart(game) {
+    const cardDeck = data.prototypeData.map(dataSet => {
+      const card = new Card(dataSet);
+      return card;
+    });
+    const currentDeck = new Deck(cardDeck);
+    const currentRound = new Round(currentDeck);
+    game.currentRound = currentRound;
+  }
+  //------------------------------------------------------------
+
+  beforeEach('define variables', function() {
+    game = new Game();
+  });
+
   it('should have a place to keep track of the current round', function() {
-    const game = new Game();
 
     expect(game).to.have.a.key('currentRound');
   });
   
   it('should be able to start everything', function() {
-    const game = new Game();
 
     expect(game.start).to.be.a('function');
   });
 
-  it.skip('once it starts, it needs to start a new Round', function() {
-    const game = new Game();
+  it('once it starts, it needs to start a new Round', function() {
+    
+    expect(game.currentRound).to.deep.equal({});
 
-    function testStart() {
-
-    }
-    game.testStart();
+    testStart(game);
 
     expect(game.currentRound).to.be.an.instanceOf(Round);
   });
 
-  it.skip('should create cards when it starts', function() { 
-    const game = new Game();
-    
-    game.start();
+  it('should create cards when it starts', function() { 
+
+    testStart(game);
      
     expect(game.currentRound.deck.cards[0]).to.be.an.instanceof(Card);
     expect(game.currentRound.deck.cards[0]).to.deep.equal(prototypeQuestions[0]);
   });
 
-  it.skip('should put these cards in a deck when it starts', function() { // how test this??
-    const game = new Game();
-    
-    game.start();
+  it('should put these cards in a deck when it starts', function() { // how test this??
+
+    testStart(game);
      
     expect(game.currentRound.deck).to.be.an.instanceof(Deck);
     expect(game.currentRound.deck.cards).to.deep.equal(prototypeQuestions);
