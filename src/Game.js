@@ -1,10 +1,30 @@
 const data = require('./data');
 const prototypeQuestions = data.prototypeData;
 const util = require('./util');
+const Deck = require('../src/Deck');
+const Card = require('../src/Card');
+const Round = require('../src/Round');
+const Turn = require('../src/Turn');
+
 
 class Game {
-  constructor() {}
-
+  constructor() {
+    this.currentRound = {};
+  }
+  setUpRound() {
+    const cardDeck = data.prototypeData.map(dataSet => {
+      const card = new Card(dataSet);
+      return card;
+    });
+    const currentDeck = new Deck(cardDeck);
+    const currentRound = new Round(currentDeck);
+    this.currentRound = currentRound;
+  }
+  start() { 
+    this.setUpRound();
+    this.printMessage(this.currentRound.deck, this.currentRound);
+    this.printQuestion(this.currentRound);
+  }
   printMessage(deck, round) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
