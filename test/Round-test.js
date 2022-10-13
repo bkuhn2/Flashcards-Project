@@ -29,8 +29,18 @@ describe('Round', function() {
   });
 
   it('should receive the deck', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    });
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
@@ -39,8 +49,18 @@ describe('Round', function() {
   });
 
   it('should return the current card', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    })
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
@@ -49,8 +69,18 @@ describe('Round', function() {
   });
 
   it('should update the turns property when a turn is taken', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    })
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
@@ -67,8 +97,18 @@ describe('Round', function() {
   // should we test to see if a new Turn is instantiated? Is it possible?
 
   it('should evaluate the guess and return a response when true', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    })
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
@@ -77,8 +117,18 @@ describe('Round', function() {
   });
 
   it('should evaluate the guess and return a response when false', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    })
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
@@ -87,8 +137,18 @@ describe('Round', function() {
   });
 
   it('should remember the ID of the question when guess is incorrect', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    })
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
@@ -98,8 +158,18 @@ describe('Round', function() {
   });
 
   it('should discard the current card', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    })
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
@@ -113,8 +183,18 @@ describe('Round', function() {
   });
 
   it('should be able to calculate the percentage of correct guesses', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    })
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
@@ -125,8 +205,18 @@ describe('Round', function() {
   });
 
   it('should tell you when the round ends and your winning %', function() {
-    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
-    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const card1 = new Card({
+      "id": 1,
+      "question": 'what day is it?',
+      "answers": ['Tuesday', 'Wednesday'],
+      "correctAnswer": 'Wednesday'
+    });
+    const card2 = new Card({
+      "id": 2,
+      "question": 'what time is it?',
+      "answers": ['4:00', '5:00'],
+      "correctAnswer": '4:00'
+    })
     const deck  = new Deck([card1, card2])
 
     const round = new Round(deck);
