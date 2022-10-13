@@ -9,7 +9,7 @@ describe('Card', function() {
     const card = new Card();
     expect(Card).to.be.a('function');
   });
-
+//NEED A ID TEST IN HERE??
   it('should be an instance of Card', function() {
     const card = new Card();
     expect(card).to.be.an.instanceof(Card);
