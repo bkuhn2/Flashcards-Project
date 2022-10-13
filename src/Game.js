@@ -13,10 +13,17 @@ class Game {
 
   }
   start() {
-    const cardDeck = data.prototypeData.map()
-      // want to take the data array and loop through
-      // each time, want to instantiate a new Card and have it go 
-      //    to an arry, so a iterator that creates a new array
+    const cardDeck = data.prototypeData.map(dataSet => {
+      const card = new Card(dataSet);
+      return card;
+    });
+    // console.log('card deck array: ', cardDeck);
+    const currentDeck = new Deck(cardDeck);
+      // console.log(currentDeck);
+    const currentRound = new Round(currentDeck);
+      // console.log(currentRound);
+    this.currentRound = currentRound;
+    // console.log(this.currentRound);
   }
   printMessage(deck, round) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.

@@ -25,7 +25,9 @@ describe('Round', function() {
 
   it('should create cards', function() {
     // console.log('array of data: ', data.prototypeData);
-
+    const game = new Game();
+    game.start();
+    
   });
 
 });
