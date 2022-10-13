@@ -11,7 +11,7 @@ class Game {
   constructor() {
     this.currentRound = {};
   }
-  start() {
+  start() { // refactor so some of these are broken out
     const cardDeck = data.prototypeData.map(dataSet => {
       const card = new Card(dataSet);
       return card;
@@ -24,7 +24,7 @@ class Game {
     this.currentRound = currentRound;
     
     this.printMessage(this.currentRound.deck, this.currentRound);
-    this.printQuestion(this.currentRound);
+    // this.printQuestion(this.currentRound);
   }
   printMessage(deck, round) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
