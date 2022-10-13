@@ -11,18 +11,17 @@ class Game {
   constructor() {
     this.currentRound = {};
   }
-  start() { // refactor so some of these are broken out
+  setUpRound() {
     const cardDeck = data.prototypeData.map(dataSet => {
       const card = new Card(dataSet);
       return card;
     });
-    
     const currentDeck = new Deck(cardDeck);
-    
     const currentRound = new Round(currentDeck);
-     
     this.currentRound = currentRound;
-    
+  }
+  start() { 
+    this.setUpRound();
     this.printMessage(this.currentRound.deck, this.currentRound);
     this.printQuestion(this.currentRound);
   }
