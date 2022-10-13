@@ -12,7 +12,7 @@ const prototypeQuestions = data.prototypeData;
 const { prototype } = require('mocha');
 
 
-describe('Round', function() {
+describe('Game', function() {
 
   let game;
 
