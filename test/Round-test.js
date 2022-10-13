@@ -111,4 +111,30 @@ describe('Round', function() {
     expect(round.returnCurrentCard()).to.equal(card2);
     expect(round.discardPile).to.deep.equal([card1]);
   });
+
+  it('should be able to calculate the percentage of correct guesses', function() {
+    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
+    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const deck  = new Deck([card1, card2])
+
+    const round = new Round(deck);
+      
+    round.takeTurn('Tuesday');
+
+    expect(round.calculatePercentCorrect()).to.equal('0.00%');
+  });
+
+  it('should tell you when the round ends and your winning %', function() {
+    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
+    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const deck  = new Deck([card1, card2])
+
+    const round = new Round(deck);
+      
+    round.takeTurn('Tuesday');
+    round.takeTurn('4:00');
+    
+    expect(round.endRound()).to.equal(`**Round over!** You answered 50.00% of the questions correctly!`);
+
+  });
 });

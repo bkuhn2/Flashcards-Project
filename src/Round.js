@@ -23,6 +23,15 @@ class Round {
     
     return currentTurn.giveFeedback()
   }
+  calculatePercentCorrect() {
+    const correctGuesses = this.turns - this.incorrectGuesses.length;
+    const winningPercentage = correctGuesses / this.turns;
+    return parseFloat(winningPercentage * 100).toFixed(2)+"%";
+  }
+  endRound() {
+    console.log(`**Round over!** You answered ${this.calculatePercentCorrect()} of the questions correctly!`);
+    return `**Round over!** You answered ${this.calculatePercentCorrect()} of the questions correctly!`
+  }
 }
 
 module.exports = Round;
@@ -39,9 +48,7 @@ module.exports = Round;
 //    ・ incorrect guesses will be stored VIA THE ID in an array above✅
 //  - returns feedback: method of Turn✅
 
-// calculatePercentCorrect
-//  - calculates + returns percentage of correct guesses
-//  - HOW?? incorrectGuesses.length / turns?
+// calculatePercentCorrect✅
 
-// endRound
+// endRound✅
 //  - consolelogs string Round over etc, interpolate percentCorrect()
