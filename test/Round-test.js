@@ -4,21 +4,38 @@ const expect = chai.expect;
 const Deck = require('../src/Deck');
 const Card = require('../src/Card');
 const Round = require('../src/Round');
+const Turn = require('../src/Turn')
 
 describe('Round', function() {
 
-  it('should have a turns property', function() {
+  it('should keep track of turns', function() {
     const round = new Round();
 
     expect(round).to.have.any.key('turns');
     expect(round.turns).to.equal(0);
   });
 
-  it('should have an incorrect guess property', function() {
+  it('should have a place to remember questions of incorrect guesses', function() {
     const round = new Round();
 
     expect(round).to.have.any.key('incorrectGuesses');
     expect(round.incorrectGuesses).to.deep.equal([]);
+  });
+
+  it('should have a discard pile', function() {
+    const round = new Round();
+
+    expect(round.discardPile).to.deep.equal([]);
+  });
+
+  it('should receive the deck', function() {
+    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
+    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const deck  = new Deck([card1, card2])
+
+    const round = new Round(deck);
+
+    expect(round.deck).to.equal(deck);
   });
 
   it('should return the current card', function() {
@@ -26,11 +43,72 @@ describe('Round', function() {
     const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
     const deck  = new Deck([card1, card2])
 
-    const round = new Round();
-    
-    expect(round.returnCurrentCard(deck)).to.equal(card1);
+    const round = new Round(deck);
+
+    expect(round.returnCurrentCard()).to.equal(card1);
   });
 
-  it('should')
+  it('should update the turns property when a turn is taken', function() {
+    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
+    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const deck  = new Deck([card1, card2])
 
+    const round = new Round(deck);
+
+    round.takeTurn('Wednesday');
+
+    expect(round.turns).to.equal(1);
+
+    round.takeTurn('5:00')
+
+    expect(round.turns).to.equal(2);
+  });
+
+  // should we test to see if a new Turn is instantiated? Is it possible?
+
+  it('should evaluate the guess and return a response when true', function() {
+    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
+    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const deck  = new Deck([card1, card2])
+
+    const round = new Round(deck);
+
+    expect(round.takeTurn('Wednesday')).to.equal('correct!');
+  });
+
+  it('should evaluate the guess and return a response when false', function() {
+    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
+    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const deck  = new Deck([card1, card2])
+
+    const round = new Round(deck);
+  
+    expect(round.takeTurn('Tuesday')).to.equal('incorrect!');
+  });
+
+  it('should remember the ID of the question when guess is incorrect', function() {
+    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
+    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const deck  = new Deck([card1, card2])
+
+    const round = new Round(deck);
+    round.takeTurn('Tuesday');
+
+    expect(round.incorrectGuesses).to.deep.equal([1]);
+  });
+
+  it('should discard the current card', function() {
+    const card1 = new Card(1, 'what day is it?', ['Tuesday', 'Wednesday'], 'Wednesday');
+    const card2 = new Card(2, 'what time is it?', ['4:00', '5:00'], '4:00')
+    const deck  = new Deck([card1, card2])
+
+    const round = new Round(deck);
+   
+    expect(round.returnCurrentCard()).to.equal(card1);
+   
+    round.takeTurn('Tuesday');
+
+    expect(round.returnCurrentCard()).to.equal(card2);
+    expect(round.discardPile).to.deep.equal([card1]);
+  });
 });
