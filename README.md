@@ -7,7 +7,7 @@ This is a flash card game that is played in the terminal console via the command
 ![](https://media.giphy.com/media/z3C5wUvOdWvA9kXHHj/giphy.gif)
 
 ## Technologies used
-This was written using VS Code and Terminal, along with GitHub primarily utilizing javascript.
+This was written using JavaScript, Mocha and Chai.
 
 ## Install/Setup Instructions
 Clone down this repo and using the Terminal cd into the directory. Then, run **node index.js** and the game will load in the Terminal.
